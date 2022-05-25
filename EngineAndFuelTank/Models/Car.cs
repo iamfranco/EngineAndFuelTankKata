@@ -22,6 +22,9 @@ namespace EngineAndFuelTank.Models
 
         public Car(double fuelLevel)
         {
+            if (fuelLevel < 0)
+                fuelLevel = 0;
+
             _fuelTank = new FuelTank();
             fuelTankDisplay = new FuelTankDisplay(_fuelTank);
             _engine = new Engine(_fuelTank);
@@ -37,6 +40,10 @@ namespace EngineAndFuelTank.Models
 
         public void Refuel(double liters) => _fuelTank.Refuel(liters);
 
-        public void RunningIdle() => _engine.Consume(IDLE_FUEL_CONSUMPTION);
+        public void RunningIdle()
+        {
+            if (_engine.IsRunning)
+                _engine.Consume(IDLE_FUEL_CONSUMPTION);
+        }
     }
 }
