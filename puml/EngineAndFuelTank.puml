@@ -1,0 +1,106 @@
+@startuml "Engine And Fuel Tank"
+skinparam classAttributeIconSize 0
+
+interface ICar
+{
+  + //EngineIsRunning : bool { get }//
+  + //EngineStart() : void//
+  + //EngineStop() : void//
+  + //Refuel(liters : double) : void//
+  + //RunningIdle() : void//
+}
+
+interface IEngine
+{
+  + //IsRunning : bool { get }//
+  + //Consume(liters : double) : void//
+  + //Start() : void//
+  + //Stop() : void//
+}
+
+interface IFuelTank
+{
+  + //FillLevel : double { get }//
+  + //IsOnReserve : bool { get }//
+  + //IsComplete : bool { get }//
+  + //Consume(liters : double) : void//
+  + //Refuel(liters : double) : void//
+}
+
+interface IFuelTankDisplay
+{
+  + //FillLevel : double { get }//
+  + //IsOnReserve : bool { get }//
+  + //IsComplete : bool { get }//
+}
+
+class Car
+{
+  - DEFAULT_FUEL_LEVEL : int
+  - IDLE_FUEL_CONSUMPTION : double
+
+  + fuelTankDisplay : IFuelTankDisplay
+  - engine : IEngine
+  - fuelTank : IFuelTank
+
+  + EngineIsRunning : bool { get }
+
+  + Car()
+  + Car(fuelLevel : double)
+
+  + EngineStart() : void
+  + EngineStop() : void
+  + Refuel(liters : double) : void
+  + RunningIdle() : void
+}
+
+class Engine
+{
+  - fuelTank : IFuelTank
+
+  + IsRunning : bool { get }
+
+  + Engine(fuelTank : IFuelTank)
+
+  + Consume(liters : double) : void
+  + Start() : void
+  + Stop() : void
+}
+
+class FuelTank
+{
+  - MAX_TANK_SIZE : int
+
+  + FillLevel : double { get }
+  + IsOnReserve : bool { get }
+  + IsComplete : bool { get }
+
+  + Consume(liters : double) : void
+  + Refuel(liters : double) : void
+}
+
+class FuelTankDisplay
+{
+  - fuelTank : FuelTank
+
+  + FillLevel : double { get }
+  + IsOnReserve : bool { get }
+  + IsComplete : bool { get }
+
+  + FuelTankDisplay(fuelTank : IFuelTank)
+} 
+
+ICar <|.. Car
+Car o--- IFuelTankDisplay
+Car o--- IEngine
+Car o--- IFuelTank
+
+IEngine <|.. Engine
+Engine o-- IFuelTank
+
+IFuelTank <|.. FuelTank
+
+IFuelTankDisplay <|.. FuelTankDisplay
+FuelTankDisplay o-- IFuelTank
+
+@enduml
