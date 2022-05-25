@@ -22,9 +22,6 @@ namespace EngineAndFuelTank.Models
 
         public Car(double fuelLevel)
         {
-            if (fuelLevel < 0)
-                fuelLevel = 0;
-
             _fuelTank = new FuelTank();
             fuelTankDisplay = new FuelTankDisplay(_fuelTank);
             _engine = new Engine(_fuelTank);
