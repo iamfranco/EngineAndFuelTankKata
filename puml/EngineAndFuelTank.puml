@@ -36,9 +36,6 @@ interface IFuelTankDisplay
 
 class Car
 {
-  - DEFAULT_FUEL_LEVEL : int
-  - IDLE_FUEL_CONSUMPTION : double
-
   + fuelTankDisplay : IFuelTankDisplay
   - engine : IEngine
   - fuelTank : IFuelTank
@@ -65,23 +62,16 @@ class Engine
   + Consume(liters : double) : void
   + Start() : void
   + Stop() : void
-
-  - IsFuelTankEmpty() : bool
 }
 
 class FuelTank
 {
-  - MAX_TANK_SIZE : int
-
   + FillLevel : double { get }
   + IsOnReserve : bool { get }
   + IsComplete : bool { get }
 
   + Consume(liters : double) : void
   + Refuel(liters : double) : void
-
-  - PositiveOrZero(liters : double) : double
-  - EnsureFillLevelValid() : void
 }
 
 class FuelTankDisplay
