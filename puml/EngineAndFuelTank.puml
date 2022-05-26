@@ -81,6 +81,7 @@ class FuelTank
   + Refuel(liters : double) : void
 
   - PositiveOrZero(liters : double) : double
+  - EnsureFillLevelValid() : void
 }
 
 class FuelTankDisplay
