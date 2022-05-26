@@ -10,4 +10,4 @@ Here we have 3 folders:
 
 ### UML Class Diagram
 
-![alt text](puml/Engine%20And%20Fuel%20Tank.png "Logo Title Text 1")
+![alt text](puml/Engine%20And%20Fuel%20Tank.png "UML Class Diagram")
