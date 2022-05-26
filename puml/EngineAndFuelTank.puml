@@ -85,7 +85,7 @@ class FuelTank
 
 class FuelTankDisplay
 {
-  - fuelTank : FuelTank
+  - fuelTank : IFuelTank
 
   + FillLevel : double { get }
   + IsOnReserve : bool { get }
