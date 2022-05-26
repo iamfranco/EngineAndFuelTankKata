@@ -21,16 +21,18 @@ namespace EngineAndFuelTank.Models
         public void Consume(double liters)
         {
             _fuelTank.Consume(liters);
-            if (_fuelTank.FillLevel == 0)
+            if (IsFuelTankEmpty())
                 Stop();
         }
 
         public void Start()
         {
-            if (_fuelTank.FillLevel > 0)
+            if (!IsFuelTankEmpty())
                 IsRunning = true;
         }
 
         public void Stop() => IsRunning = false;
+
+        private bool IsFuelTankEmpty() => _fuelTank.FillLevel <= 0;
     }
 }
