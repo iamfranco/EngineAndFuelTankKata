@@ -20,17 +20,24 @@ namespace EngineAndFuelTank.Models
         public void Consume(double liters)
         {
             FillLevel -= PositiveOrZero(liters);
-            if (FillLevel < 0)
-                FillLevel = 0;
+            EnsureFillLevelValid();
         }
 
         public void Refuel(double liters)
         {
             FillLevel += PositiveOrZero(liters);
-            if (FillLevel > MAX_TANK_SIZE)
-                FillLevel = MAX_TANK_SIZE;
+            EnsureFillLevelValid();
         }
 
         private double PositiveOrZero(double liters) => liters < 0 ? 0 : liters;
+
+        private void EnsureFillLevelValid()
+        {
+            if (FillLevel < 0)
+                FillLevel = 0;
+
+            if (FillLevel > MAX_TANK_SIZE)
+                FillLevel = MAX_TANK_SIZE;
+        }
     }
 }
