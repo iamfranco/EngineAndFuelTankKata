@@ -16,10 +16,6 @@ namespace EngineAndFuelTank.Models
         private readonly IEngine _engine;
         private readonly IFuelTank _fuelTank;
 
-        public Car() : this(DEFAULT_FUEL_LEVEL)
-        {
-        }
-
         public Car(double fuelLevel)
         {
             _fuelTank = new FuelTank();
@@ -28,6 +24,8 @@ namespace EngineAndFuelTank.Models
 
             _fuelTank.Refuel(fuelLevel);
         }
+
+        public Car() : this(DEFAULT_FUEL_LEVEL) { }
 
         public bool EngineIsRunning => _engine.IsRunning;
 
