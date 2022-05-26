@@ -39,7 +39,7 @@ namespace EngineAndFuelTank.Models
 
         public void RunningIdle()
         {
-            if (_engine.IsRunning)
+            if (EngineIsRunning)
                 _engine.Consume(IDLE_FUEL_CONSUMPTION);
         }
     }
