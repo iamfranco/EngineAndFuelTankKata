@@ -65,6 +65,8 @@ class Engine
   + Consume(liters : double) : void
   + Start() : void
   + Stop() : void
+
+  - IsFuelTankEmpty() : bool
 }
 
 class FuelTank
@@ -108,10 +110,9 @@ FuelTankDisplay o-- IFuelTank
 note right of Car::Car
 Car(fuelLevel : double)
 {
-  fuelTank = new FuelTank();
-  engine = new Engine(fuelTank);
-  fuelTankDisplay = 
-    new FuelTankDisplay(fuelTank);
+  fuelTank = **new** FuelTank();
+  engine = **new** Engine(fuelTank);
+  fuelTankDisplay = **new** FuelTankDisplay(fuelTank);
 
   fuelTank.Refuel(fuelLevel);
 }
